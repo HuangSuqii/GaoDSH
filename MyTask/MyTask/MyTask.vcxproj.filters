@@ -66,9 +66,6 @@
     <ClInclude Include="EnergySaliencyUtil.h">
       <Filter>头文件\Energy\EnergySaliency</Filter>
     </ClInclude>
-    <ClInclude Include="EnergySaliencyRC.h">
-      <Filter>头文件\Energy\EnergySaliency</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -94,9 +91,6 @@
     </ClCompile>
     <ClCompile Include="EnergyLocalShannon.cpp">
       <Filter>源文件\Energy\EnergyGrayscale</Filter>
-    </ClCompile>
-    <ClCompile Include="EnergySaliencyRC.cpp">
-      <Filter>源文件\Energy\EnergySaliency</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

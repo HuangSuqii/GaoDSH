@@ -86,7 +86,6 @@
     <ClInclude Include="EnergySaliencyFT.h" />
     <ClInclude Include="EnergySaliencyHC.h" />
     <ClInclude Include="EnergySaliencyLC.h" />
-    <ClInclude Include="EnergySaliencyRC.h" />
     <ClInclude Include="EnergySaliencySR.h" />
     <ClInclude Include="EnergySaliencyUtil.h" />
   </ItemGroup>
@@ -97,7 +96,6 @@
     <ClCompile Include="EnergySaliencyFT.cpp" />
     <ClCompile Include="EnergySaliencyHC.cpp" />
     <ClCompile Include="EnergySaliencyLC.cpp" />
-    <ClCompile Include="EnergySaliencyRC.cpp" />
     <ClCompile Include="EnergySaliencySR.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
