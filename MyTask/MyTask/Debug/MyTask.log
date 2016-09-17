@@ -1,0 +1,21 @@
+﻿生成启动时间为 2016/9/15 18:13:31。
+     1>项目“F:\VSProject\MyTask\MyTask\MyTask.vcxproj”在节点 2 上(ClCompile 个目标)。
+     1>ClCompile:
+         D:\Visual Studio 2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt EnergySaliencyRC.cpp
+         EnergySaliencyRC.cpp
+     1>f:\vsproject\mytask\mytask\energysaliencyrc.cpp(5): error C2143: 语法错误 : 缺少“;”(在“*”的前面)
+     1>f:\vsproject\mytask\mytask\energysaliencyrc.cpp(5): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+     1>f:\vsproject\mytask\mytask\energysaliencyrc.cpp(6): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+     1>f:\vsproject\mytask\mytask\energysaliencyrc.cpp(6): error C2556: “int *EnergySaliencyRC::segment_graph(int,int,edge *,float)”: 重载函数与“EnergySaliencyRC::universe *EnergySaliencyRC::segment_graph(int,int,edge *,float)”只是在返回类型上不同
+                 f:\vsproject\mytask\mytask\energysaliencyrc.h(88) : 参见“EnergySaliencyRC::segment_graph”的声明
+     1>f:\vsproject\mytask\mytask\energysaliencyrc.cpp(6): error C2371: “EnergySaliencyRC::segment_graph”: 重定义；不同的基类型
+                 f:\vsproject\mytask\mytask\energysaliencyrc.h(88) : 参见“EnergySaliencyRC::segment_graph”的声明
+     1>f:\vsproject\mytask\mytask\energysaliencyrc.cpp(269): error C2597: 对非静态成员“EnergySaliencyRC::EPS”的非法引用
+     1>f:\vsproject\mytask\mytask\energysaliencyrc.cpp(269): error C3867: “EnergySaliencyRC::EPS”:  函数调用缺少参数列表；请使用“&EnergySaliencyRC::EPS”创建指向成员的指针
+     1>f:\vsproject\mytask\mytask\energysaliencyrc.cpp(269): error C2568: “+”: 无法解析函数重载
+                 无法从以前的错误中恢复；正在停止编译
+     1>已完成生成项目“F:\VSProject\MyTask\MyTask\MyTask.vcxproj”(ClCompile 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:02.33

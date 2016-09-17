@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\Energy">
+      <UniqueIdentifier>{8afdeb47-7cee-404f-abfd-359516773dd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Energy">
+      <UniqueIdentifier>{627ab06c-5b17-4a52-8449-41d140888ece}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Motion">
+      <UniqueIdentifier>{2f80ee9f-5e0c-4506-a54f-ceeb371a2b5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Motion">
+      <UniqueIdentifier>{4c4b69a2-4fb4-4529-8c2f-209385ba52ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Energy\EnergySaliency">
+      <UniqueIdentifier>{4e7a75dd-9ab6-4640-a3a3-e2687792121b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Energy\EnergySaliency">
+      <UniqueIdentifier>{98e13676-63eb-4242-b0df-501018473848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Energy\EnergyGrayscale">
+      <UniqueIdentifier>{a4a0e01b-3953-4066-9f06-5544590c30b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Energy\EnergyGrayscale">
+      <UniqueIdentifier>{be35fb33-50c0-48ab-8a8f-eedb5d25ae6d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EnergyFeature.h">
+      <Filter>头文件\Energy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergySaliencyFT.h">
+      <Filter>头文件\Energy\EnergySaliency</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergySaliencyHC.h">
+      <Filter>头文件\Energy\EnergySaliency</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergySaliencyLC.h">
+      <Filter>头文件\Energy\EnergySaliency</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergySaliencySR.h">
+      <Filter>头文件\Energy\EnergySaliency</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyLocalMeanContrast.h">
+      <Filter>头文件\Energy\EnergyGrayscale</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyLocalShannon.h">
+      <Filter>头文件\Energy\EnergyGrayscale</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyLocalStd.h">
+      <Filter>头文件\Energy\EnergyGrayscale</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergySaliencyUtil.h">
+      <Filter>头文件\Energy\EnergySaliency</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergySaliencyRC.h">
+      <Filter>头文件\Energy\EnergySaliency</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergySaliencyFT.cpp">
+      <Filter>源文件\Energy\EnergySaliency</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergySaliencyHC.cpp">
+      <Filter>源文件\Energy\EnergySaliency</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergySaliencyLC.cpp">
+      <Filter>源文件\Energy\EnergySaliency</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergySaliencySR.cpp">
+      <Filter>源文件\Energy\EnergySaliency</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyLocalStd.cpp">
+      <Filter>源文件\Energy\EnergyGrayscale</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyLocalMeanContrast.cpp">
+      <Filter>源文件\Energy\EnergyGrayscale</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyLocalShannon.cpp">
+      <Filter>源文件\Energy\EnergyGrayscale</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergySaliencyRC.cpp">
+      <Filter>源文件\Energy\EnergySaliency</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
