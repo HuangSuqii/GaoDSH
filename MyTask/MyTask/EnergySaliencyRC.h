@@ -1,9 +1,9 @@
 #pragma once
 #include "EnergyFeature.h"
 #include "EnergySaliencyUtil.h"
+#include <cmath>
 
-typedef struct
-{
+typedef struct {
 	float w;
 	int a, b;
 } edge;
@@ -13,6 +13,12 @@ typedef struct {
 	int p;
 	int size;
 } uni_elt;
+
+template<class T> inline T pntSqrDist(const Point_<T> &p1, const Point_<T> &p2) { 
+	return sqr(p1.x - p2.x) + sqr(p1.y - p2.y); 
+} // out of range risk for T = byte, ...
+
+const double EPS = 1e-200;		// Epsilon (zero value)
 
 class EnergySaliencyRC : EnergyFeature
 {
@@ -33,6 +39,7 @@ public:
 		return mSingleton;
 	}
 	void AlgrithomProcessor(Mat& srcImg, Mat& desImg);
+
 
 
 private:
@@ -62,7 +69,6 @@ private:
 	static Mat GetRC(CMat &img3f, CMat &idx1i, int regNum, double sigmaDist = 0.4);
 	static Mat GetRC(CMat &img3f, double sigmaDist, double segK, int segMinSize, double segSigma);
 
-	const double EPS = 1e-200;		// Epsilon (zero value)
 	class universe 
 	{
 	public:
@@ -85,8 +91,8 @@ private:
 		return sqrt(sqr(p1[0] - p2[0]) + sqr(p1[1] - p2[1]) + sqr(p1[2] - p2[2]));
 	}
 
-	universe* segment_graph(int nu_vertices, int nu_edges, edge *edges, float c);
+	static universe* segment_graph(int nu_vertices, int nu_edges, edge *edges, float c);
 
-	int SegmentImage(CMat &_src3f, Mat &pImgInd, double sigma, double c, int min_size);
+	static int SegmentImage(CMat &_src3f, Mat &pImgInd, double sigma, double c, int min_size);
 
 };

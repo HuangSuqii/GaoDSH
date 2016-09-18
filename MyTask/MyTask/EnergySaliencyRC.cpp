@@ -1,8 +1,52 @@
 #include "EnergySaliencyRC.h"
 
-EnergySaliencyRC* EnergySaliencyRC::mSingleton = NULL;
+bool operator<(const edge &a, const edge &b) {
+	return a.w < b.w;
+}
 
-universe* EnergySaliencyRC::segment_graph(int nu_vertices, int nu_edges, edge *edges, float c)
+EnergySaliencyRC* EnergySaliencyRC::mSingleton = NULL;
+const int EnergySaliencyRC::DefaultNums[3] = { 12, 12, 12 };
+
+void EnergySaliencyRC::AlgrithomProcessor(Mat& srcImg, Mat& desImg)
+{
+	srcImg.convertTo(srcImg, CV_32FC3, 1.0 / 255);
+	desImg = GetRC(srcImg);
+}
+
+EnergySaliencyRC::universe::universe(int elements) {
+	elts = new uni_elt[elements];
+	num = elements;
+	for (int i = 0; i < elements; i++) {
+		elts[i].rank = 0;
+		elts[i].size = 1;
+		elts[i].p = i;
+	}
+}
+EnergySaliencyRC::universe::~universe() {
+	delete[] elts;
+}
+int EnergySaliencyRC::universe::find(int x) {
+	int y = x;
+	while (y != elts[y].p)
+		y = elts[y].p;
+	elts[x].p = y;
+	return y;
+}
+void EnergySaliencyRC::universe::join(int x, int y) {
+	if (elts[x].rank > elts[y].rank) {
+		elts[y].p = x;
+		elts[x].size += elts[y].size;
+	}
+	else {
+		elts[x].p = y;
+		elts[y].size += elts[x].size;
+		if (elts[x].rank == elts[y].rank)
+			elts[y].rank++;
+	}
+	num--;
+}
+
+EnergySaliencyRC::universe* EnergySaliencyRC::segment_graph(int nu_vertices, int nu_edges, edge *edges, float c)
 {
 	// sort edges by weight
 	std::sort(edges, edges + nu_edges);
@@ -36,7 +80,6 @@ universe* EnergySaliencyRC::segment_graph(int nu_vertices, int nu_edges, edge *e
 	delete threshold;
 	return u;
 }
-
 int EnergySaliencyRC::SegmentImage(CMat &_src3f, Mat &pImgInd, double sigma, double c, int min_size)
 {
 	CV_Assert(_src3f.type() == CV_32FC3);
@@ -113,14 +156,67 @@ int EnergySaliencyRC::SegmentImage(CMat &_src3f, Mat &pImgInd, double sigma, dou
 
 	return idxNum;
 }
-
-void EnergySaliencyRC::AlgrithomProcessor(Mat& srcImg, Mat& desImg)
+void EnergySaliencyRC::BuildRegions(CMat& regIdx1i, vector<Region> &regs, CMat &colorIdx1i, int colorNum)
 {
-	srcImg.convertTo(srcImg, CV_32FC3, 1.0 / 255);
-	desImg = GetRC(srcImg);
+	int rows = regIdx1i.rows, cols = regIdx1i.cols, regNum = (int)regs.size();
+	double cx = cols / 2.0, cy = rows / 2.0;
+	Mat_<int> regColorFre1i = Mat_<int>::zeros(regNum, colorNum); // region color frequency
+	for (int y = 0; y < rows; y++){
+		const int *regIdx = regIdx1i.ptr<int>(y);
+		const int *colorIdx = colorIdx1i.ptr<int>(y);
+		for (int x = 0; x < cols; x++, regIdx++, colorIdx++){
+			Region &reg = regs[*regIdx];
+			reg.pixNum++;
+			reg.centroid.x += x;
+			reg.centroid.y += y;
+			regColorFre1i(*regIdx, *colorIdx)++;
+			reg.ad2c += Point2d(abs(x - cx), abs(y - cy));
+		}
+	}
+
+	for (int i = 0; i < regNum; i++){
+		Region &reg = regs[i];
+		reg.centroid.x /= reg.pixNum * cols;
+		reg.centroid.y /= reg.pixNum * rows;
+		reg.ad2c.x /= reg.pixNum * cols;
+		reg.ad2c.y /= reg.pixNum * rows;
+		int *regColorFre = regColorFre1i.ptr<int>(i);
+		for (int j = 0; j < colorNum; j++){
+			float fre = (float)regColorFre[j] / (float)reg.pixNum;
+			if (regColorFre[j] > EPS)
+				reg.freIdx.push_back(make_pair(fre, j));
+		}
+	}
 }
+void EnergySaliencyRC::RegionContrast(const vector<Region> &regs, CMat &color3fv, Mat& regSal1d, double sigmaDist)
+{
+	Mat_<float> cDistCache1f = Mat::zeros(color3fv.cols, color3fv.cols, CV_32F); {
+		Vec3f* pColor = (Vec3f*)color3fv.data;
+		for (int i = 0; i < cDistCache1f.rows; i++)
+			for (int j = i + 1; j < cDistCache1f.cols; j++)
+				cDistCache1f[i][j] = cDistCache1f[j][i] = vecDist<float, 3>(pColor[i], pColor[j]);
+	}
 
-
+	int regNum = (int)regs.size();
+	Mat_<double> rDistCache1d = Mat::zeros(regNum, regNum, CV_64F);
+	regSal1d = Mat::zeros(1, regNum, CV_64F);
+	double* regSal = (double*)regSal1d.data;
+	for (int i = 0; i < regNum; i++){
+		const Point2d &rc = regs[i].centroid;
+		for (int j = 0; j < regNum; j++){
+			if (i < j) {
+				double dd = 0;
+				const vector<CostfIdx> &c1 = regs[i].freIdx, &c2 = regs[j].freIdx;
+				for (size_t m = 0; m < c1.size(); m++)
+					for (size_t n = 0; n < c2.size(); n++)
+						dd += cDistCache1f[c1[m].second][c2[n].second] * c1[m].first * c2[n].first;
+				rDistCache1d[j][i] = rDistCache1d[i][j] = dd * exp(-pntSqrDist(rc, regs[j].centroid) / sigmaDist);
+			}
+			regSal[i] += regs[j].pixNum * rDistCache1d[i][j];
+		}
+		regSal[i] *= exp(-9.0 * (sqr(regs[i].ad2c.x) + sqr(regs[i].ad2c.y)));
+	}
+}
 int EnergySaliencyRC::Quantize(CMat& img3f, Mat &idx1i, Mat &_color3f, Mat &_colorNum, double ratio, const int clrNums[3])
 {
 	float clrTmp[3] = { clrNums[0] - 0.0001f, clrNums[1] - 0.0001f, clrNums[2] - 0.0001f };
@@ -211,7 +307,6 @@ int EnergySaliencyRC::Quantize(CMat& img3f, Mat &idx1i, Mat &_color3f, Mat &_col
 
 	return _color3f.cols;
 }
-
 void EnergySaliencyRC::SmoothSaliency(CMat &colorNum1i, Mat &sal1f, float delta, const vector<vector<CostfIdx>> &similar)
 {
 	if (sal1f.cols < 2)
@@ -384,7 +479,6 @@ void EnergySaliencyRC::SmoothByRegion(Mat &sal1f, CMat &segIdx1i, int regNum, bo
 			sal[x] = (float)saliecy[idx[x]];
 	}
 }
-
 
 Mat EnergySaliencyRC::GetRC(CMat &img3f)
 {
