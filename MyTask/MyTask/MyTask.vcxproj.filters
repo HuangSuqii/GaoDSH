@@ -69,6 +69,9 @@
     <ClInclude Include="EnergySaliencyRC.h">
       <Filter>头文件\Energy\EnergySaliency</Filter>
     </ClInclude>
+    <ClInclude Include="EnergyFrequency.h">
+      <Filter>头文件\Energy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -97,6 +100,9 @@
     </ClCompile>
     <ClCompile Include="EnergySaliencyRC.cpp">
       <Filter>源文件\Energy\EnergySaliency</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyFrequency.cpp">
+      <Filter>源文件\Energy</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

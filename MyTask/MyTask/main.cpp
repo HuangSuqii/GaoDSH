@@ -10,9 +10,12 @@
 #include "EnergySaliencyLC.h"
 #include "EnergySaliencyFT.h"
 
+#include "EnergyFrequency.h"
+
 int main()
 {
 	Mat srcImg = imread("F:\\code_search\\MSRA10K_Imgs_GT\\Imgs\\147.jpg");
+	//Mat srcImg = imread("test1.jpg");
 	Mat outImg;
 
 	// 灰度特性
@@ -27,7 +30,10 @@ int main()
 	EnergySaliencyLC* p7 = EnergySaliencyLC::GetInstance();
 	EnergySaliencyFT* p8 = EnergySaliencyFT::GetInstance();
 
-	p5->AlgrithomProcessor(srcImg, outImg);
+	// 频谱特性
+	EnergyFrequency* p9 = EnergyFrequency::GetInstance();
+
+	p9->AlgrithomProcessor(srcImg, outImg);
 	namedWindow("in");
 	imshow("in",srcImg);
 	namedWindow("out");

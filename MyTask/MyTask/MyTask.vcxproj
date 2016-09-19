@@ -34,11 +34,11 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="D:\OPENCV2.4.9\PropertySheet_2.4.9debug.props" />
+    <Import Project="PropertySheet_2.4.9debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="D:\OPENCV2.4.9\PropertySheet_2.4.9release.props" />
+    <Import Project="PropertySheet_2.4.9release.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -80,6 +80,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="EnergyFeature.h" />
+    <ClInclude Include="EnergyFrequency.h" />
     <ClInclude Include="EnergyLocalMeanContrast.h" />
     <ClInclude Include="EnergyLocalShannon.h" />
     <ClInclude Include="EnergyLocalStd.h" />
@@ -91,6 +92,7 @@
     <ClInclude Include="EnergySaliencyUtil.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EnergyFrequency.cpp" />
     <ClCompile Include="EnergyLocalMeanContrast.cpp" />
     <ClCompile Include="EnergyLocalShannon.cpp" />
     <ClCompile Include="EnergyLocalStd.cpp" />
