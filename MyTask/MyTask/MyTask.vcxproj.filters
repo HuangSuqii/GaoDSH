@@ -37,6 +37,12 @@
     <Filter Include="源文件\Energy\EnergyGrayscale">
       <UniqueIdentifier>{be35fb33-50c0-48ab-8a8f-eedb5d25ae6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Shape">
+      <UniqueIdentifier>{b51e7072-1196-444e-ae7b-51d2eba0a084}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Shape">
+      <UniqueIdentifier>{313cce17-4833-4272-b026-5fbe06323e76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EnergyFeature.h">
@@ -72,6 +78,12 @@
     <ClInclude Include="EnergyFrequency.h">
       <Filter>头文件\Energy</Filter>
     </ClInclude>
+    <ClInclude Include="ShapeFeature.h">
+      <Filter>头文件\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeFractal.h">
+      <Filter>头文件\Shape</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -103,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="EnergyFrequency.cpp">
       <Filter>源文件\Energy</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeFractal.cpp">
+      <Filter>源文件\Shape</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

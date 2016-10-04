@@ -90,6 +90,8 @@
     <ClInclude Include="EnergySaliencyRC.h" />
     <ClInclude Include="EnergySaliencySR.h" />
     <ClInclude Include="EnergySaliencyUtil.h" />
+    <ClInclude Include="ShapeFeature.h" />
+    <ClInclude Include="ShapeFractal.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EnergyFrequency.cpp" />
@@ -102,6 +104,7 @@
     <ClCompile Include="EnergySaliencyRC.cpp" />
     <ClCompile Include="EnergySaliencySR.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ShapeFractal.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
