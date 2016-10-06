@@ -84,6 +84,9 @@
     <ClInclude Include="ShapeFractal.h">
       <Filter>头文件\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="ShapeLBP.h">
+      <Filter>头文件\Shape</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -117,6 +120,9 @@
       <Filter>源文件\Energy</Filter>
     </ClCompile>
     <ClCompile Include="ShapeFractal.cpp">
+      <Filter>源文件\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeLBP.cpp">
       <Filter>源文件\Shape</Filter>
     </ClCompile>
   </ItemGroup>

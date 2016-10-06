@@ -16,11 +16,13 @@
 // 包含形状特性父类
 #include "ShapeFeature.h"
 #include "ShapeFractal.h"	// 包含分形特性
+#include "ShapeLBP.h"
 
 int main()
 {
 	Mat srcImg = imread("F:\\code_search\\MSRA10K_Imgs_GT\\Imgs\\147.jpg");
 	Mat outImg;
+	Mat featureVec;
 
 	// 灰度特性
 	EnergyLocalShannon* p1 = EnergyLocalShannon::GetInstance();
@@ -38,7 +40,9 @@ int main()
 	// 分形特性
 	ShaprFractal* p10 = ShaprFractal::GetInstance();
 
-	p10->AlgrithomProcessor(srcImg, outImg);
+	ShapeLBP* p11 = ShapeLBP::GetInstance();
+
+	p11->AlgrithomProcessor(srcImg, outImg, featureVec);
 	namedWindow("in");
 	imshow("in",srcImg);
 	namedWindow("out");
