@@ -87,6 +87,9 @@
     <ClInclude Include="ShapeLBP.h">
       <Filter>头文件\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="MotionOpticalFlow.h">
+      <Filter>头文件\Motion</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -124,6 +127,9 @@
     </ClCompile>
     <ClCompile Include="ShapeLBP.cpp">
       <Filter>源文件\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="MotionOpticalFlow.cpp">
+      <Filter>源文件\Motion</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

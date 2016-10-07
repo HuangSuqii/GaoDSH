@@ -90,6 +90,7 @@
     <ClInclude Include="EnergySaliencyRC.h" />
     <ClInclude Include="EnergySaliencySR.h" />
     <ClInclude Include="EnergySaliencyUtil.h" />
+    <ClInclude Include="MotionOpticalFlow.h" />
     <ClInclude Include="ShapeFeature.h" />
     <ClInclude Include="ShapeFractal.h" />
     <ClInclude Include="ShapeLBP.h" />
@@ -105,6 +106,7 @@
     <ClCompile Include="EnergySaliencyRC.cpp" />
     <ClCompile Include="EnergySaliencySR.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MotionOpticalFlow.cpp" />
     <ClCompile Include="ShapeFractal.cpp" />
     <ClCompile Include="ShapeLBP.cpp" />
   </ItemGroup>

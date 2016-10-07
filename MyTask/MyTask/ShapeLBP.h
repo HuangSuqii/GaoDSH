@@ -34,24 +34,25 @@ public:
 	void AlgrithomProcessor(Mat& srcImg, Mat& featureMap);
 	void AlgrithomProcessor(Mat& srcImg, Mat& featureMap, Mat& featureVec);
 
-	void GetCircurlarLBP(Mat& srcImg, Mat& dstImg);
-	void GetRotationLBP(Mat& featureMap);
-	void GetUniformedLBP(Mat& featureMap);
-	Mat GetLBPVec(Mat& featureMap);
+	
 
 	
 private:
-	ShapeLBP() {}
-	int getHopTimes(int n);
-	Mat getLocalRegionLBPH(const Mat& src, int minValue, int maxValue, bool normed);
+	ShapeLBP() {}	
+	void GetCircurlarLBP(Mat& srcImg, Mat& dstImg);	// 获取圆形LBP特征。
+	void GetRotationLBP(Mat& featureMap);	// 获取旋转不变LBP特征。
+	void GetUniformedLBP(Mat& featureMap);		// 获取等价模式LBP特征。
+	Mat GetLBPVec(Mat& featureMap);		// 获取整幅图像的特征向量
+	int getHopTimes(int n);	//	计算一个数值的二进制表示的跳变次数。
+	Mat getLocalRegionLBPH(const Mat& src, int minValue, int maxValue, bool normed);	//	计算局部图像块的统计特征向量
 
 	static ShapeLBP* mSingleton;
-
-	int radius = 2;
-	bool rotation = 0;
-	bool uniformed = 1;
-	int grid_x = 8;
-	int grid_y = 8;
-	int neighbors = 8;
+	int neighbors = 8;	// 参与比较的邻居数量，该值设置为不可改变。
+	int radius = 1;		// 半径大小，长度可以调节，默认长度是1。
+	bool rotation = 0;	// 是否开启旋转不变模式，默认是0，不开启。
+	bool uniformed = 0;	// 是否开启等价模式，默认是0，不开启。
+	int grid_x = 8;		// 将图像横向分成grid_x份，默认是8
+	int grid_y = 8;		// 将图像纵向分成grid_y份，默认是8
+	
 
 };

@@ -1,4 +1,4 @@
-﻿生成启动时间为 2016/10/7 2:18:40。
+﻿生成启动时间为 2016/10/8 0:06:26。
      1>项目“F:\GitRepository\GaoDSH\MyTask\MyTask\MyTask.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          D:\Visual Studio 2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
@@ -14,6 +14,7 @@
          Debug\EnergySaliencyRC.obj
          Debug\EnergySaliencySR.obj
          Debug\main.obj
+         Debug\MotionOpticalFlow.obj
          Debug\ShapeFractal.obj
          Debug\ShapeLBP.obj
          MyTask.vcxproj -> F:\GitRepository\GaoDSH\MyTask\Debug\MyTask.exe
@@ -21,4 +22,4 @@
 
 生成成功。
 
-已用时间 00:00:02.81
+已用时间 00:00:03.22
